@@ -8,11 +8,15 @@ import BaseLayout from 'src/layouts/BaseLayout';
 import SuspenseLoader from 'src/components/SuspenseLoader';
 
 const Loader = (Component) => (props) =>
-  (
-    <Suspense fallback={<SuspenseLoader />}>
-      <Component {...props} />
-    </Suspense>
-  );
+(
+  <Suspense fallback={<SuspenseLoader />}>
+    <Component {...props} />
+  </Suspense>
+);
+
+// Auth
+
+const SignIn = Loader(lazy(() => import('src/content/pages/Auth/SignIn')))
 
 // Pages
 
@@ -81,6 +85,11 @@ const routes: RouteObject[] = [
     path: '',
     element: <BaseLayout />,
     children: [
+      // Auth
+      {
+        path: '/signin',
+        element: <SignIn />
+      },
       {
         path: '/',
         element: <Overview />
