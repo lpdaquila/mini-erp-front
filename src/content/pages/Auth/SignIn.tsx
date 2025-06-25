@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 import MuiAlert from '@mui/material/Alert';
+import { useAuth } from "src/utils/auth";
+import { useNavigate } from "react-router";
 
 const MainContent = styled(Box)(() => `
     height: 100%;
@@ -15,9 +17,28 @@ const MainContent = styled(Box)(() => `
 `)
 
 export default function SignIn() {
+    const navigate = useNavigate();
     const [snackBarMessage, setSnackBarMessage] = useState('')
     const [emailInput, setEmailInput] = useState('')
     const [passwordInput, setPasswordInput] = useState('')
+
+    const { handleSignIn } = useAuth();
+
+    async function handleSignInBtn() {
+        if (emailInput == '' || passwordInput == '') {
+            setSnackBarMessage('Please provide an email and password.')
+            return;
+        }
+
+        const requestSignIn = await handleSignIn(emailInput, passwordInput);
+        if (requestSignIn.detail) {
+            setSnackBarMessage(`${requestSignIn.detail}`)
+            return;
+        }
+
+        navigate('/')
+    }
+
     return (
         <>
             <Helmet>
@@ -52,6 +73,7 @@ export default function SignIn() {
                             />
 
                             <Button
+                                onClick={handleSignInBtn}
                                 variant="outlined"
                                 style={{ marginTop: 40 }}
                             >

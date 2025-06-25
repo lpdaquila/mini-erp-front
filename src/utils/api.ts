@@ -2,6 +2,8 @@ import axios, { AxiosError } from "axios";
 import { ApiError } from "src/models/Api";
 import { handleGetAccessToken } from "./auth";
 
+// const baseURL = process.env.REACT_APP_API_URL;
+const baseURL = 'http://localhost:8000/api/v1'
 
 export async function useApi<TypeDataResponse>(
     endpoint: string,
@@ -22,7 +24,7 @@ export async function useApi<TypeDataResponse>(
     }
 
     try {
-        const request = await axios(`${process.env.API_URL}/${endpoint}`, {
+        const request = await axios(`${baseURL}/${endpoint}`, {
             method,
             data: method != 'GET' && data,
             params: method == 'GET' && data
