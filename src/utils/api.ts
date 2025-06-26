@@ -26,6 +26,7 @@ export async function useApi<TypeDataResponse>(
     try {
         const request = await axios(`${baseURL}/${endpoint}`, {
             method,
+            headers,
             data: method != 'GET' && data,
             params: method == 'GET' && data
         })

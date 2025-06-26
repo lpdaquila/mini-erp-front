@@ -25,22 +25,24 @@ export function useAuth() {
 
         const response = await getUser();
 
-        if (!response.detail) {
+        if (!response.detail && response.data.enterprise) {
             dispatch(setUser(response.data.user))
             dispatch(setUserEnterprise(response.data.enterprise))
         }
     }
 
     function handlePermissionsExists(permissionCodename: string) {
+        if (!auth.enterprise) return false;
+
         if (auth.enterprise.is_owner) return true;
 
-        return auth.enterprise.permissions.some(p => p.codename == permissionCodename);
+        return auth.enterprise.permissions?.some(p => p.codename == permissionCodename) ?? false;
     }
 
     async function handleSignIn(email: string, password: string) {
         const response = await signIn({ email, password });
 
-        if (!response.detail) {
+        if (!response.detail && response.data.enterprise) {
             dispatch(setUser(response.data.user))
             dispatch(setUserEnterprise(response.data.enterprise))
 
