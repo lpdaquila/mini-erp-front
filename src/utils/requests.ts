@@ -26,7 +26,7 @@ async function getGroups() {
 
 // CRUD
 async function getAGroup(id: number) {
-    return await useApi<ApiGetGroup>(`companies/group/${id}`)
+    return await useApi<ApiGetGroup>(`companies/groups/${id}`)
 }
 
 async function addGroup({ name, permissions }: { name: string, permissions: string }) {
