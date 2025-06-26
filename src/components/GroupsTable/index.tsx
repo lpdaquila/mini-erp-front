@@ -50,7 +50,7 @@ export default function GroupsTable({ groupsList, refreshList }: Props) {
                             <TableRow>
                                 <TableCell>ID</TableCell>
                                 <TableCell>Name</TableCell>
-                                <TableCell align="right">Actions</TableCell>
+                                <TableCell align="left">Actions</TableCell>
                             </TableRow>
                             <TableBody>
                                 {groupsList.map((group) => (
@@ -68,10 +68,10 @@ export default function GroupsTable({ groupsList, refreshList }: Props) {
                                                 fontWeight="bold"
                                                 gutterBottom
                                             >
-                                                #{group.name}
+                                                {group.name}
                                             </Typography>
                                         </TableCell>
-                                        <TableCell align="right">
+                                        <TableCell>
                                             {handlePermissionsExists('change_group') &&
                                                 <Tooltip title="Edit role" arrow>
                                                     <IconButton
