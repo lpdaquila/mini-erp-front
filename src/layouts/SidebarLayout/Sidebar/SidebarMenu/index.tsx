@@ -31,7 +31,7 @@ import ChromeReaderModeTwoToneIcon from '@mui/icons-material/ChromeReaderModeTwo
 import WorkspacePremiumTwoToneIcon from '@mui/icons-material/WorkspacePremiumTwoTone';
 import CameraFrontTwoToneIcon from '@mui/icons-material/CameraFrontTwoTone';
 import DisplaySettingsTwoToneIcon from '@mui/icons-material/DisplaySettingsTwoTone';
-import { Group, Tune } from '@mui/icons-material';
+import { Group, PersonAddAlt1, Tune } from '@mui/icons-material';
 
 const MenuWrapper = styled(Box)(
   ({ theme }) => `
@@ -261,10 +261,10 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/add-group"
-                  startIcon={<MmsTwoToneIcon />}
+                  to="/add-employee"
+                  startIcon={<PersonAddAlt1 />}
                 >
-                  Add Role
+                  Add Employee
                 </Button>
               </ListItem>
             </List>

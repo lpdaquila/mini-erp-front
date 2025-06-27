@@ -50,7 +50,7 @@ async function getEmployees() {
 
 //CRUD
 async function getAEmployee(id: number) {
-    return await useApi<ApiGetEmployee>(`companies/employees/${id}`)
+    return await useApi<ApiGetEmployee>(`companies/employee/${id}`)
 }
 
 async function addEmployee(
@@ -62,11 +62,11 @@ async function addEmployee(
 async function editEmployee(
     id: number, { name, email, groups }:
         { name?: string, email?: string, groups?: string }) {
-    return await useApi(`companies/employees/${id}`, 'PUT', { name, email, groups });
+    return await useApi(`companies/employee/${id}`, 'PUT', { name, email, groups });
 }
 
 async function deleteEmployee(id: number) {
-    return await useApi(`companies/employees/${id}`, 'DELETE')
+    return await useApi(`companies/employee/${id}`, 'DELETE')
 }
 
 //Tasks

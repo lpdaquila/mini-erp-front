@@ -16,6 +16,7 @@ export default function Employees() {
 
     async function handleGetEmployees() {
         const response = await getEmployees();
+        setEmployeesData(response.data.employees)
         setRequestLoading(false);
     }
 
