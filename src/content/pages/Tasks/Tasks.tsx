@@ -1,51 +1,51 @@
 import { Container } from "@mui/material";
 import { useEffect, useState } from "react"
 import { Helmet } from "react-helmet-async";
-import EmployeesTable from "src/components/EmployeesTable";
 import PageTitle from "src/components/PageTitle";
 import PageTitleWrapper from "src/components/PageTitleWrapper";
+import TasksTable from "src/components/TasksTable";
 import { PermissionMiddleware } from "src/middlewares/PermissionMiddleware";
-import { Employee } from "src/models/Employee";
+import { Task } from "src/models/Tasks";
 import { useRequests } from "src/utils/requests";
 
-export default function Employees() {
+export default function Tasks() {
     const [requestLoading, setRequestLoading] = useState(true);
-    const [employeesData, setEmployeesData] = useState<Employee[]>([])
+    const [tasksData, setTasksData] = useState<Task[]>([])
 
-    const { getEmployees } = useRequests();
+    const { getTasks } = useRequests();
 
-    async function handleGetEmployees() {
-        const response = await getEmployees();
+    async function handleGetTasks() {
+        const response = await getTasks();
 
         if (!response.detail) {
-            setEmployeesData(response.data.employees)
+            setTasksData(response.data.tasks)
             setRequestLoading(false);
         }
     }
 
     useEffect(() => {
-        handleGetEmployees();
+        handleGetTasks();
     }, [])
 
     return (
-        <PermissionMiddleware codeName="view_employee">
+        <PermissionMiddleware codeName="view_task">
             <Helmet>
-                <title>Employees</title>
+                <title>Tasks</title>
             </Helmet>
 
             <PageTitleWrapper>
                 <PageTitle
-                    heading="Employees"
-                    subHeading="Query the enterprise employees and execute actions for each employee."
+                    heading="Tasks"
+                    subHeading="Query the enterprise tasks and manage."
                 />
             </PageTitleWrapper>
             <Container maxWidth='xl' sx={{
                 marginX: requestLoading ? '-10%' : 0,
                 transition: 'all .5s'
             }}>
-                <EmployeesTable
-                    employeesList={employeesData}
-                    refreshList={handleGetEmployees}
+                <TasksTable
+                    tasksList={tasksData}
+                    refreshList={handleGetTasks}
                 />
             </Container>
         </PermissionMiddleware>

@@ -35,6 +35,7 @@ export async function useApi<TypeDataResponse>(
             data: request.data,
             detail: ''
         }
+
     } catch (e) {
         const error = e as AxiosError<ApiError>;
 

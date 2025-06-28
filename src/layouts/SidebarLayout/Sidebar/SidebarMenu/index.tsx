@@ -31,7 +31,7 @@ import ChromeReaderModeTwoToneIcon from '@mui/icons-material/ChromeReaderModeTwo
 import WorkspacePremiumTwoToneIcon from '@mui/icons-material/WorkspacePremiumTwoTone';
 import CameraFrontTwoToneIcon from '@mui/icons-material/CameraFrontTwoTone';
 import DisplaySettingsTwoToneIcon from '@mui/icons-material/DisplaySettingsTwoTone';
-import { Group, PersonAddAlt1, Tune } from '@mui/icons-material';
+import { AddTask, FormatListBulleted, Group, PersonAddAlt1, Tune } from '@mui/icons-material';
 
 const MenuWrapper = styled(Box)(
   ({ theme }) => `
@@ -286,8 +286,8 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/dashboards/tasks"
-                  startIcon={<BrightnessLowTwoToneIcon />}
+                  to="/tasks"
+                  startIcon={<FormatListBulleted />}
                 >
                   Manage Tasks
                 </Button>
@@ -297,10 +297,10 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/dashboards/messenger"
-                  startIcon={<MmsTwoToneIcon />}
+                  to="/add-task"
+                  startIcon={<AddTask />}
                 >
-                  Messenger
+                  Add Task
                 </Button>
               </ListItem>
             </List>
