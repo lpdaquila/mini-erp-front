@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react"
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import { useAuth } from "src/utils/auth";
 
 type Props = {
@@ -7,12 +7,13 @@ type Props = {
 }
 
 export function AuthMiddleware({ children }: Props) {
-    const navigate = useNavigate();
     const { isLogged } = useAuth();
 
-    useEffect(() => {
-        if (!isLogged) navigate('/signin')
-    }, [])
+    if (!isLogged) {
+        return (
+            <Navigate to={'/signin'} replace />
+        )
+    }
 
     return (
         <>

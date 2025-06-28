@@ -99,7 +99,7 @@ function Logo() {
 
   return (
     <TooltipWrapper
-      title="Tokyo Free Black React Typescript Admin Dashboard"
+      title="Enterprise Resources Management"
       arrow
     >
       <LogoWrapper to="/overview">
@@ -113,13 +113,8 @@ function Logo() {
           }}
           overlap="circular"
           color="success"
-          badgeContent="2.0"
         >
-          <LogoSignWrapper>
-            <LogoSign>
-              <LogoSignInner />
-            </LogoSign>
-          </LogoSignWrapper>
+          <img src='/logo.png' alt='enterprise logo' />
         </Badge>
       </LogoWrapper>
     </TooltipWrapper>
